@@ -86,5 +86,15 @@ public class KafkaConsumerConfig {
 
     // ==========================
 
+    //                                                                          vamos lembrar deste nome     |
+    @Bean  //                                                                                                v
+    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, AccountCreatedEvent>> accountDeletedEventKafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, AccountCreatedEvent> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(accountCreatedEventConsumerFactory());
 
+        return factory;
+    }
+
+
+    // ==========================
 }
